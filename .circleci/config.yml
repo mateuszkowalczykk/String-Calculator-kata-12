@@ -3,14 +3,14 @@ version: 2.0
 jobs:
   test:
     docker:
-      - image: circleci/openjdk:11-stretch
+      - image: circleci/openjdk:stretch
     steps:
       - checkout
       - run: mvn test
 
   build:
     docker:
-      - image: circleci/openjdk:11-stretch
+      - image: circleci/openjdk:stretch
     steps:
       - checkout
       - run: mvn package
