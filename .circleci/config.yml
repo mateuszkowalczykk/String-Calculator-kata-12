@@ -1,26 +1,30 @@
-version: 2.0
-
+version: 2
 jobs:
-  test:
-    docker:
-      - image: circleci/openjdk:stretch
-    steps:
-      - checkout
-      - run: ./mvnw test
-
   build:
+
+    working_directory: ~/string-calculator-12
+
     docker:
-      - image: circleci/openjdk:stretch
+      - image: circleci/openjdk:11-stretch
+
     steps:
+
       - checkout
-      - run: ./mvnw package
 
-workflows:
-  version: 2
+      - restore_cache:
+          key: string-calculator-12-{{ checksum "pom.xml" }}
 
-  build-then-test:
-    jobs:
-      - build
-      - test:
-          requires:
-            - build
+      - run: mvn dependency:go-offline
+
+      - save_cache:
+          paths:
+            - ~/.m2
+          key: string-calculator-12-{{ checksum "pom.xml" }}
+
+      - run: mvn package
+
+      - store_test_results:
+          path: target/surefire-reports
+
+      - store_artifacts:
+          path: target/string-calculator-0.0.1-SNAPSHOT.jar
