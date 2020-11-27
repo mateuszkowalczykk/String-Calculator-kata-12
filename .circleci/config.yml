@@ -27,4 +27,4 @@ jobs:
           path: target/surefire-reports
 
       - store_artifacts:
-          path: target/string-calculator-0.0.1-SNAPSHOT.jar
+          path: target/string-calculator-12-1.0-SNAPSHOT.jar
