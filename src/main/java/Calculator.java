@@ -8,7 +8,7 @@ public class Calculator {
     public static int add(String string) {
         if(!string.isEmpty()){
             List<Integer> numbers = strArrToNUmList(getSplit(string));
-            //negatives(numbers);
+            negatives(numbers);
             return listSum(numbers);
         }
         return 0;
@@ -40,7 +40,7 @@ public class Calculator {
             }
             throw new RuntimeException("Wrong Custom delimiter format");
         }
-        return string.split(",");
+        return string.split(",|\n");
     }
 
     private static Integer listSum(List<Integer> numbers) {
