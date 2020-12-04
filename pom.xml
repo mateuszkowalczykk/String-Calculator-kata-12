@@ -105,7 +105,6 @@
                             </receivers>
                             <!-- content -->
                             <subject>CircleCI String-Calculator project</subject>
-                            <htmlMessageFile>target/surefire-reports/test_report.html</htmlMessageFile>
                             <fileSets>
                                 <fileSet>
                                     <directory>${basedir}/target</directory>
