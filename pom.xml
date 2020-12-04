@@ -101,7 +101,7 @@
                 <executions>
                     <execution>
                         <id>send surefire notification</id>
-                        <phase>site</phase>
+                        <phase>prepare-package</phase>
                         <goals>
                             <goal>surefire-mail</goal>
                         </goals>
@@ -120,12 +120,13 @@
                         </configuration>
                     </execution>
                     <execution>
-                        <id>send a mail</id>
+                        <id>send a mail with package</id>
                         <phase>package</phase>
                         <goals>
-                            <goal>send-mail</goal>
+                            <goal>surefire-mail</goal>
                         </goals>
                         <configuration>
+                            <groovyCondition><![CDATA[errors == 0 & skipped == 0]]></groovyCondition>
                             <subject>CircleCI String-Calculator project</subject>
                             <htmlMessageFile>target/surefire-reports/test_report.html</htmlMessageFile>
                             <!--                            <fileSets>-->
