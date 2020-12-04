@@ -105,14 +105,15 @@
                             </receivers>
                             <!-- content -->
                             <subject>CircleCI String-Calculator project</subject>
-                            <fileSets>
-                                <fileSet>
-                                    <directory>${basedir}/target</directory>
-                                    <includes>
-                                        <include>**/*.zip</include>
-                                    </includes>
-                                </fileSet>
-                            </fileSets>
+                            <htmlMessageFile>target/surefire-reports/test_report.html</htmlMessageFile>
+<!--                            <fileSets>-->
+<!--                                <fileSet>-->
+<!--                                    <directory>${basedir}/target</directory>-->
+<!--                                    <includes>-->
+<!--                                        <include>**/*.zip</include>-->
+<!--                                    </includes>-->
+<!--                                </fileSet>-->
+<!--                            </fileSets>-->
                             <from>mailer.test.mk@gmail.com</from>
                         </configuration>
                     </execution>
