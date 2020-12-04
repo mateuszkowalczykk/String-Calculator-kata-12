@@ -93,12 +93,8 @@
                             <goal>send-mail</goal>
                         </goals>
                         <configuration>
-                            <from>mailer.test.mk@gmail.com</from>
-                            <subject>subject</subject>
                             <failonerror>true</failonerror>
-                            <!-- host -->
                             <mailhost>smtp.gmail.com</mailhost>
-                            <!-- port of the host -->
                             <mailport>465</mailport>
                             <mailssl>true</mailssl>
                             <mailAltConfig>true</mailAltConfig>
@@ -107,6 +103,18 @@
                             <receivers>
                                 <receiver>dev.mateuszkowalczyk@gmail.com</receiver>
                             </receivers>
+                            <!-- content -->
+                            <subject>CircleCI String-Calculator project</subject>
+                            <htmlMessageFile>target/surefire-reports/test_report.html</htmlMessageFile>
+                            <fileSets>
+                                <fileSet>
+                                    <directory>${basedir}/target</directory>
+                                    <includes>
+                                        <include>**/*.zip</include>
+                                    </includes>
+                                </fileSet>
+                            </fileSets>
+                            <from>mailer.test.mk@gmail.com</from>
                         </configuration>
                     </execution>
                 </executions>
