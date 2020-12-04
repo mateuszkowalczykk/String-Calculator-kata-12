@@ -85,7 +85,40 @@
                 <groupId>ch.fortysix</groupId>
                 <artifactId>maven-postman-plugin</artifactId>
                 <version>0.1.6</version>
+                <configuration>
+                    <failonerror>true</failonerror>
+                    <mailhost>smtp.gmail.com</mailhost>
+                    <mailport>465</mailport>
+                    <mailssl>true</mailssl>
+                    <mailAltConfig>true</mailAltConfig>
+                    <mailuser>mailer.test.mk@gmail.com</mailuser>
+                    <mailpassword>Postman123</mailpassword>
+                    <receivers>
+                        <receiver>dev.mateuszkowalczyk@gmail.com</receiver>
+                    </receivers>
+                    <from>mailer.test.mk@gmail.com</from>
+                </configuration>
                 <executions>
+                    <execution>
+                        <id>send surefire notification</id>
+                        <phase>site</phase>
+                        <goals>
+                            <goal>surefire-mail</goal>
+                        </goals>
+                        <configuration>
+                            <subject>CircleCI String-Calculator fail tests</subject>
+                            <htmlMessageFile>target/surefire-reports/test_report.html</htmlMessageFile>
+                            <!--                            <fileSets>-->
+                            <!--                                <fileSet>-->
+                            <!--                                    <directory>${basedir}/target</directory>-->
+                            <!--                                    <includes>-->
+                            <!--                                        <include>**/*.zip</include>-->
+                            <!--                                    </includes>-->
+                            <!--                                </fileSet>-->
+                            <!--                            </fileSets>-->
+                            <from>mailer.test.mk@gmail.com</from>
+                        </configuration>
+                    </execution>
                     <execution>
                         <id>send a mail</id>
                         <phase>package</phase>
@@ -93,27 +126,16 @@
                             <goal>send-mail</goal>
                         </goals>
                         <configuration>
-                            <failonerror>true</failonerror>
-                            <mailhost>smtp.gmail.com</mailhost>
-                            <mailport>465</mailport>
-                            <mailssl>true</mailssl>
-                            <mailAltConfig>true</mailAltConfig>
-                            <mailuser>mailer.test.mk@gmail.com</mailuser>
-                            <mailpassword>Postman123</mailpassword>
-                            <receivers>
-                                <receiver>dev.mateuszkowalczyk@gmail.com</receiver>
-                            </receivers>
-                            <!-- content -->
                             <subject>CircleCI String-Calculator project</subject>
                             <htmlMessageFile>target/surefire-reports/test_report.html</htmlMessageFile>
-<!--                            <fileSets>-->
-<!--                                <fileSet>-->
-<!--                                    <directory>${basedir}/target</directory>-->
-<!--                                    <includes>-->
-<!--                                        <include>**/*.zip</include>-->
-<!--                                    </includes>-->
-<!--                                </fileSet>-->
-<!--                            </fileSets>-->
+                            <!--                            <fileSets>-->
+                            <!--                                <fileSet>-->
+                            <!--                                    <directory>${basedir}/target</directory>-->
+                            <!--                                    <includes>-->
+                            <!--                                        <include>**/*.zip</include>-->
+                            <!--                                    </includes>-->
+                            <!--                                </fileSet>-->
+                            <!--                            </fileSets>-->
                             <from>mailer.test.mk@gmail.com</from>
                         </configuration>
                     </execution>
