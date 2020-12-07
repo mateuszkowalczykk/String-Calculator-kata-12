@@ -8,6 +8,13 @@
     <artifactId>string-calculator-12</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+
+    <properties>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
+    </properties>
+
+
     <dependencies>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
@@ -23,10 +30,6 @@
         </dependency>
     </dependencies>
 
-    <properties>
-        <maven.compiler.source>11</maven.compiler.source>
-        <maven.compiler.target>11</maven.compiler.target>
-    </properties>
 
     <build>
         <plugins>
@@ -144,6 +147,14 @@
             </plugin>
         </plugins>
     </build>
+
+    <distributionManagement>
+        <repository>
+            <id>github</id>
+            <name>GitHub mateuszkowalczykk Apache Maven Packages</name>
+            <url>https://maven.pkg.github.com/mateuszkowalczykk/CircleCiTest</url>
+        </repository>
+    </distributionManagement>
 
 
 </project>
